@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>日期选择插件</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<input type="text" class="ipt">
+		<input type="text" class="ipt">
+		<!-- <div id="date-mask"></div> -->
+		
+		
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/PZMobileDateSelect.js"></script>
+		<script type="text/javascript">
+			$(function(){
+
+				var PZselect = new PZDateSelect({
+					model : 'date',
+					startfunc : function(){
+						$(".ipt").focus(function(){
+							PZselect.setDefDate($(this).val());
+							PZselect.show($(this));
+						});
+					},
+					okcallback : function($ipt,valArr){
+						$ipt.val(valArr.join('-'));
+					}
+				})
+
+			});
+
+
+		</script>
+	</body>
+</html>
